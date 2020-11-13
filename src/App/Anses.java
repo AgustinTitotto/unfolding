@@ -6,7 +6,7 @@ public class Anses extends LectorArchivos {
 
 
     public static ArrayList<Ciudadano> listaCiudadanos() {
-        ArrayList<String> data = createList("src\\archivos");
+        ArrayList<String> data = createList("src\\App\\archivos");
         boolean admin;
         boolean block;
         double ubiLongitud;
@@ -14,10 +14,10 @@ public class Anses extends LectorArchivos {
         ArrayList<Ciudadano> ciudadanos = new ArrayList<>();
 
         for (String datum : data) {
-            String[] datasplt = datum.split("/", 6);
+            String[] datasplt = datum.split("/", 7);
                 admin = "true".equals(datasplt[3]);
                 block = "true".equals(datasplt[4]);
-                ubiLongitud = Double.parseDouble(datasplt[5]);
+                ubiLongitud = Double.parseDouble((datasplt[5]));
                 ubiLatitud = Double.parseDouble(datasplt[6]);
                 ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block, ubiLongitud, ubiLatitud));
         }
@@ -70,7 +70,7 @@ public class Anses extends LectorArchivos {
 
     private static ArrayList<Ciudadano> listaAnses(){
         ArrayList<String> data;
-        data = createList("src\\dataSet");
+        data = createList("src\\App\\archivos");
         boolean admin;
         boolean block;
         double ubiLongitud;
@@ -78,7 +78,7 @@ public class Anses extends LectorArchivos {
         ArrayList<Ciudadano>ciudadanos=new ArrayList<>();
 
         for (String datum : data) {
-            String[] datasplt = datum.split("/", 6);
+            String[] datasplt = datum.split("/", 7);
 
             admin = "true".equals(datasplt[3]);
             block = "true".equals(datasplt[4]);

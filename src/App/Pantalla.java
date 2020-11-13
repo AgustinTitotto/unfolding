@@ -148,7 +148,7 @@ public class Pantalla {
     }
 
     public void datos(){
-        Brote brote=new Brote();
+        Brote brote = new Brote();
         brote.tablaBrote();
     }
 

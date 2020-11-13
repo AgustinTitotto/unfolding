@@ -124,7 +124,7 @@ public class Ciudadano {
 
     public static void save(ArrayList<Ciudadano>ciudadanos){
         try {
-            FileWriter fileWriter = new FileWriter("src\\archivos");
+            FileWriter fileWriter = new FileWriter("src\\App\\archivos");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String admin;
             String block;

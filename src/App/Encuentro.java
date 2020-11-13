@@ -21,13 +21,13 @@ public class Encuentro {
 
     public void send() {
         String toAdd = this.cuil + "/" + this.cuilCont + "/" + this.fecha + "\n";
-        Anses.añadir("src\\Notificaciones", toAdd);
+        Anses.añadir("src\\App\\Notificaciones", toAdd);
     }
 
     public static ArrayList<String> checkNot(String cuil){
         ArrayList<String> notificaciones=new ArrayList<>();
         try{
-            FileReader fileReader=new FileReader("src\\Notificaciones");
+            FileReader fileReader=new FileReader("src\\App\\Notificaciones");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line != null) {

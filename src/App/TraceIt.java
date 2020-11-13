@@ -17,7 +17,7 @@ public class TraceIt {
             String cel;
 
             if(registro==1){
-                String dato=pantalla.nuevo();
+                String dato = pantalla.nuevo();
                 Anses.nuevoCiu(dato,ciudadanos);
                 ciudadanos=Anses.listaCiudadanos();
                  cuil=dato.substring(0,11);

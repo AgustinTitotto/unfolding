@@ -10,7 +10,7 @@ public class Brote {
 
     public Brote() {
         brotePosible="";
-        brote=new ArrayList<>();
+        brote = new ArrayList<>();
     }
 
     public void tablaBrote(){
@@ -34,10 +34,10 @@ public class Brote {
         if (positivos.size()>4){
             for (int i = 0; i < positivos.size(); i++) {
                 for (int j = 0; j < contactos.size(); j++) {
-                    for (int k = j+1; k < contactos.size(); k++) {
-                        String[]cuilPositivos=positivos.get(i).split("/",3);
-                        String[]cuilContactos=contactos.get(j).split("/",3);
-                        String[]cuilContactos2=contactos.get(k).split("/",3);
+                    for (int k = 0; k < contactos.size(); k++) {
+                        String[]cuilPositivos = positivos.get(i).split("/",4);
+                        String[]cuilContactos = contactos.get(j).split("/",4);
+                        String[]cuilContactos2 = contactos.get(k).split("/",4);
                         if(cuilPositivos[0].equals(cuilContactos[0]) && cuilPositivos[0].equals(cuilContactos2[1])){
                             brotePosible=cuilPositivos[0];
                             brote.add(brotePosible);
@@ -54,8 +54,8 @@ public class Brote {
         ArrayList<String> contactos=Contacto.contactosLista();
             for (int j = 0; j < contactos.size(); j++) {
                 for (int k = 0; k < positivos.size(); k++) {
-                    String[]cuilPositivos=positivos.get(k).split("/",3);
-                    String[]cuilContactos=contactos.get(j).split("/",3);
+                    String[]cuilPositivos=positivos.get(k).split("/",4);
+                    String[]cuilContactos=contactos.get(j).split("/",4);
                     if (brotePosible.equals(cuilContactos[0])){
                         if (cuilContactos[1].equals(cuilPositivos[0])){
                             if(!canIadd(cuilContactos[1])){

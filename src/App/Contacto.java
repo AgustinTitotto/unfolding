@@ -17,7 +17,7 @@ public class Contacto extends LectorArchivos {
     }
 
     public static ArrayList<String>contactosLista(){
-        return createList("src\\Contacto");
+        return createList("src\\App\\Contacto");
     }
 
     public  void checkContact() {
@@ -51,9 +51,9 @@ public class Contacto extends LectorArchivos {
                 notificaciones.set(i,null);
             }
         }
-        escribirLista("src\\Notificaciones",notificaciones);
+        escribirLista("src\\App\\Notificaciones",notificaciones);
         String toAdd=contacto + "\n";
-        añadir("src\\Contacto",toAdd);
+        añadir("src\\App\\Contacto",toAdd);
 
     }
 
@@ -65,9 +65,9 @@ public class Contacto extends LectorArchivos {
                 notificaciones.set(i,null);
             }
         }
-        escribirLista("src\\Notificaciones",notificaciones);
+        escribirLista("src\\App\\Notificaciones",notificaciones);
         String toAdd=cuil + "\n";
-        añadir("src\\Rechazos",toAdd);
+        añadir("src\\App\\Rechazos",toAdd);
         checkBlock(cuil);
 
     }
@@ -75,7 +75,7 @@ public class Contacto extends LectorArchivos {
     private static void nuevoCaso(String cuil1,String cuil2){
         String covid="";
         try{
-            FileReader fileReader=new FileReader("src\\PositiveCovid");
+            FileReader fileReader=new FileReader("src\\App\\PositiveCovid");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line!= null){
@@ -96,14 +96,14 @@ public class Contacto extends LectorArchivos {
         double ubiLongitud = Objects.requireNonNull(Ciudadano.getCiu(covid)).ubiLongitud;
         double ubiLatitud = Objects.requireNonNull(Ciudadano.getCiu(covid)).ubiLatitud;
         String toAdd=covid+"/"+ LocalDate.now()+"/"+ubiLongitud+"/"+ubiLatitud+"\n";
-        añadir("src\\PositiveCovid",toAdd);
+        añadir("src\\App\\PositiveCovid",toAdd);
     }
 
     private static void checkContagio(String cuilCont,String cuil){
         String contacto="";
         String covid="";
         try{
-            FileReader fileReader=new FileReader("src\\Contacto");
+            FileReader fileReader=new FileReader("src\\App\\Contacto");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line!= null){
@@ -122,7 +122,7 @@ public class Contacto extends LectorArchivos {
             System.out.println(e.getMessage());
         }
         try{
-            FileReader fileReader=new FileReader("src\\PositiveCovid");
+            FileReader fileReader=new FileReader("src\\App\\PositiveCovid");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
             String line=bufferedReader.readLine();
             while(line!= null){
@@ -160,7 +160,7 @@ public class Contacto extends LectorArchivos {
     }
 
     private static void checkBlock(String cuil){
-        ArrayList<String> rechazos=createList("src\\Rechazos");
+        ArrayList<String> rechazos=createList("src\\App\\Rechazos");
         int x=0;
         for (String rechazo : rechazos) {
             if (rechazo.equals(cuil)) {

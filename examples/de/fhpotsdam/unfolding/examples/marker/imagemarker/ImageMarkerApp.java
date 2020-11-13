@@ -8,6 +8,7 @@ import de.fhpotsdam.unfolding.geo.Location;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Demonstrates how to use ImageMarkers with different icons. Note, the used icons contain translucent (the shadows) and
@@ -16,11 +17,13 @@ import java.awt.*;
 public class ImageMarkerApp extends PApplet {
 
 	Mapa mapa = new Mapa();
+	ArrayList<Location> ubicaciones = new ArrayList<>();
 
-	Location berlinLocation = new Location(52.5f, 13.4f);
-	Location veniceLocation = new Location(45.44f, 12.34f);
-	Location lisbonLocation = new Location(38.71f, -9.14f);
-	Location buenoAires = new Location(mapa.getUbiLongitudes().get(0), mapa.getUbiLatitudes().get(0));
+	public void getUbicaciones(){
+		for (int i = 0; i < mapa.getUbiLongitudes().size(); i++) {
+			ubicaciones.add(new Location(mapa.getUbiLongitudes().get(i), mapa.getUbiLatitudes().get(i)));
+		}
+	}
 
 	UnfoldingMap map;
 
@@ -33,16 +36,15 @@ public class ImageMarkerApp extends PApplet {
 	}
 
 	public void setup() {
+		getUbicaciones();
 		map = new UnfoldingMap(this);
-		map.zoomAndPanTo(4, new Location(50.26f, 12.1f));
+		map.zoomAndPanTo(10, new Location(-34.5, -58.7));
 		MapUtils.createDefaultEventDispatcher(this, map);
 
-		ImageMarker imgMarker1 = new ImageMarker(lisbonLocation, loadImage("ui/marker.png"));
-		ImageMarker imgMarker2 = new ImageMarker(veniceLocation, loadImage("ui/marker_red.png"));
-		ImageMarker imgMarker3 = new ImageMarker(berlinLocation, loadImage("ui/marker_gray.png"));
-		ImageMarker imgMarker4 = new ImageMarker(buenoAires, loadImage("ui/marker_red.png"));
-
-		map.addMarkers(imgMarker1, imgMarker2, imgMarker3, imgMarker4);
+		for (int i = 0; i < ubicaciones.size(); i++) {
+			ImageMarker imageMarkeri = new ImageMarker(ubicaciones.get(i), loadImage("ui/marker_red.png"));
+			map.addMarkers(imageMarkeri);
+		}
 	}
 
 	public void draw() {
