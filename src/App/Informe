@@ -1,0 +1,27 @@
+                    Informe explicativo de las relaciones entre clases
+
+        Los usuarios tienen la opcion de registrarse en la app, y la informacion se valida a traves del
+      archivo DATASET, una especie de base de datos donde se encuantra la info necesaria de cada ciudadano.
+      Una vez registrados, los datos se reescriben en ARCHIVOS, que representa la base de datos de la aplicacion.
+        Existen 4 clases encargadas de la lectura y escritura de datos, las cuales extienden de LECTORARCHIVOS.
+      Estas 4 clases son:
+        1)ANSES: Encargada de la validacion de informacion para los registros en la aplicacion.
+        2)ENCUENTRO: Clase destinada al manejo de mensajeria entre ciuudadanos(envio y lectura de notifiaciones),
+      utilizando el archivo NOTIFICACIONES.
+        3)CONTACTO: Clase cuya finalidad es verificar posibles contagios una vez confirmado el contacto, a partir
+      del archivo CONTACTO;Asi como chequear los bloqueos en caso de un rechazo, con el archivo RECHAZOS.
+        4) COVID19: La finalidad de esta clase es la persistencia de toda la informacion relacionada a sintomas y
+      enfermedades, asi como chequear un posible contagio de Covid, alcanzados los 2 sintomas. Esta clse utiliza los
+      archivos SINTOMAS(donde se encuantra la lista de sintomas), AFECTADOS(donde se registra los ciudadanos con su
+      respectivo sintoma) y POSITIVECOVID(donde se registran los casos positivos).
+
+        _La clase BROTE es la encargada de la deteccion de posibles brotes, mostrados cuando un administardor lo desee.
+        _La clase MAPA recopila las ubicaciones de los casos positivos de COVID para mostrarlos en pantalla
+        _PANTALLA es la clase encargada de la interfaz grafica de la aplicacion,en ella cada metodo implica una  impresion
+        por pantalla distinta que aparecera segun el usuario lo demande.
+        _Finalmente TRACEIT es la clase donde lo mencionado anteriormente se conecta, permitiendo el funcionamiento de la
+        aplicacion.
+
+
+
+
