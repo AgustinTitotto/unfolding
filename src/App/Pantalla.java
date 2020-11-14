@@ -1,5 +1,7 @@
 package App;
 
+import de.fhpotsdam.unfolding.examples.marker.imagemarker.ImageMarkerApp;
+
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -150,6 +152,8 @@ public class Pantalla {
     public void datos(){
         Brote brote = new Brote();
         brote.tablaBrote();
+        ImageMarkerApp map = new ImageMarkerApp();
+        ImageMarkerApp.main(map.args);
     }
 
     public  void clean(){
