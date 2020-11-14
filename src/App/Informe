@@ -1,4 +1,4 @@
-                    Informe explicativo de las relaciones entre clases
+                        Informe explicativo de las relaciones entre clases
 
         Los usuarios tienen la opcion de registrarse en la app, y la informacion se valida a traves del
       archivo DATASET, una especie de base de datos donde se encuantra la info necesaria de cada ciudadano.
