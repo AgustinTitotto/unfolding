@@ -104,7 +104,7 @@ public class Pantalla {
                 "2_Desbloquear acceso de un ciudadano\n" +
                 "3_Añadir un nuevo sintoma a la lista\n" +
                 "4_Eliminar sintoma existente\n" +
-                "5_Datos\n" +
+                "5_Datos y estadisticas\n" +
                 "6_Salir\n");
         int decision = Scanner.getInt("Seleccione una accion.\n");
         clean();
@@ -150,8 +150,12 @@ public class Pantalla {
     }
 
     public void datos(){
+        ArrayList<String> positivos=Covid19.positivos();
         Brote brote = new Brote();
         brote.tablaBrote();
+        System.out.println("***********************************");
+        System.out.println("La cantidad de casos positivos registrados es de "+positivos.size());
+        System.out.println("***********************************");
         ImageMarkerApp map = new ImageMarkerApp();
         ImageMarkerApp.main(map.args);
     }
