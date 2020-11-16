@@ -11,7 +11,7 @@ public class Ciudadano {
     String cuil;
     String cel;
     boolean admin;
-    boolean block;
+    public boolean block;
     double ubiLongitud;
     double ubiLatitud;
 
