@@ -65,7 +65,7 @@ public class Brote {
                     }else if(brotePosible.equals(cuilContactos[1])){
                         if (cuilContactos[0].equals(cuilPositivos[0])){
                             if(!canIadd(cuilContactos[0])){
-                                brote.add(cuilContactos[1]);
+                                brote.add(cuilContactos[0]);
                             }
                         }
                     }

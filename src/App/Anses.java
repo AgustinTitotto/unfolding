@@ -22,7 +22,7 @@ public class Anses extends LectorArchivos {
                 ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block, ubiLongitud, ubiLatitud));
         }
         return ciudadanos;
-    }//crear lista de ciudadanos a partir de ListaS(String)
+    }
 
     public static void nuevoCiu(String data,ArrayList<Ciudadano>ciudadanos) {
         ArrayList<Ciudadano> ciudadanosA = listaAnses();
@@ -62,15 +62,15 @@ public class Anses extends LectorArchivos {
         }else {
             block = "false";
         }
-        String toAdd="\n"+name + "/" + cuil + "/" + cel + "/" + admin + "/" + block+"/"+ubiLongitud+"/"+ubiLatitud;
+        String toAdd=name + "/" + cuil + "/" + cel + "/" + admin + "/" + block+"/"+ubiLongitud+"/"+ubiLatitud;
 
-        añadir("src\\archivos",toAdd);
+        añadir("src\\App\\archivos",toAdd);
 
     }//agrega un nuevo ciudadano a la lista de registrados
 
     private static ArrayList<Ciudadano> listaAnses(){
         ArrayList<String> data;
-        data = createList("src\\App\\archivos");
+        data = createList("src\\App\\dataSet");
         boolean admin;
         boolean block;
         double ubiLongitud;
