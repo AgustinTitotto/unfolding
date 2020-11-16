@@ -154,7 +154,7 @@ public class Pantalla {
         Brote brote = new Brote();
         brote.tablaBrote();
         System.out.println("***********************************");
-        System.out.println("La cantidad de casos positivos registrados es de "+positivos.size());
+        System.out.println("La cantidad de casos positivos registrados es de "+positivos.size()+" en la zona bonaerense");
         System.out.println("***********************************");
         ImageMarkerApp map = new ImageMarkerApp();
         ImageMarkerApp.main(map.args);
