@@ -14,8 +14,9 @@ public class Ciudadano {
     public boolean block;
     double ubiLongitud;
     double ubiLatitud;
+    String zona;
 
-    public Ciudadano(String nombre, String cuil, String cel, boolean admin, boolean block, double ubiLongitud, double ubiLatitud) {
+    public Ciudadano(String nombre, String cuil, String cel, boolean admin, boolean block, String zona) {
         this.nombre = nombre;
         this.cuil = cuil;
         this.cel = cel;
@@ -23,6 +24,7 @@ public class Ciudadano {
         this.block = block;
         this.ubiLongitud = ubiLongitud;
         this.ubiLatitud = ubiLatitud;
+        this.zona=zona;
 
     }
 

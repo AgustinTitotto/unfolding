@@ -18,13 +18,18 @@ public class Covid19 extends LectorArchivos {
         return  createList("src\\App\\PositiveCovid");
     }
 
+    public static ArrayList<String> afectados(){
+        return createList("src\\App\\Afectados");
+    }
+
     public static ArrayList<String> sintomas(){
         return createList("src\\App\\Sintomas");
     }
 
     public void afectado(){
+        Ciudadano ciudadano=Ciudadano.getCiu(cuil);
         ArrayList<String>sintomas=sintomas();
-        String toAdd=this.cuil + "/" + sintomas.get(this.sintoma-1) + "\n";
+        String toAdd=this.cuil + "/" + sintomas.get(this.sintoma-1) +"/"+ciudadano.zona+ "\n";
         añadir("src\\App\\Afectados",toAdd);
         checkCovid();
     }
@@ -35,7 +40,7 @@ public class Covid19 extends LectorArchivos {
         String eleccion=sintomas.get(this.sintoma-1);
 
         for (int i = 0; i < afectados.size(); i++) {
-            String[] datasplt = afectados.get(i).split("/", 2);
+            String[] datasplt = afectados.get(i).split("/", 3);
             if (datasplt[0].equals(this.cuil) && datasplt[1].equals(eleccion))
                 afectados.set(i,null);
         }
@@ -44,39 +49,26 @@ public class Covid19 extends LectorArchivos {
     }
 
     private void checkCovid() {
+        Ciudadano ciudadano=Ciudadano.getCiu(cuil);
         ArrayList<String> afectados =createList("src\\App\\Afectados");
         int x = 0;
         for (int i = 0; i < afectados.size(); i++) {
-            String[] datasplt = afectados.get(i).split("/", 2);
+            String[] datasplt = afectados.get(i).split("/", 3);
             if (datasplt[0].equals(this.cuil)){
                     x++;
                 }
 
             }
         if(x>1){
-            double ubiLongitud= Objects.requireNonNull(Ciudadano.getCiu(cuil)).ubiLongitud;
-            double ubiLatitud= Objects.requireNonNull(Ciudadano.getCiu(cuil)).ubiLatitud;
-            String toAdd=cuil+"/"+ LocalDate.now()+"/"+ubiLongitud+"/"+ubiLatitud+"\n";
+
+            String toAdd=cuil+"/"+ LocalDate.now()+"/"+ciudadano.zona+"\n";
             añadir("src\\App\\PositiveCovid",toAdd);
-            cleanAfectado();
             System.out.println("Es muy probable que usted padezca Covid-19, tome las precauciones necesarias.\n" +
                     "Encontraras mas informacion en el siguiente link:\n" +
                     "https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public/q-a-coronaviruses#:~:text=sintomas");
         }
     }
 
-    private  void cleanAfectado(){
-        ArrayList<String> afectados=createList("src\\App\\Afectados");
-
-        for (int i = 0; i <afectados.size() ; i++) {
-            String[] datasplt = afectados.get(i).split("/", 2);
-            if (datasplt[0].equals(this.cuil)){
-            afectados.set(i,null);
-            }
-        }
-        escribirLista("src\\App\\Afectados",afectados);
-
-    }
 
     public static void saveSintom(ArrayList<String> sintomas){
         escribirLista("src\\App\\Sintomas",sintomas);

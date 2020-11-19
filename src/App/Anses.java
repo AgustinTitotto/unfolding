@@ -9,17 +9,15 @@ public class Anses extends LectorArchivos {
         ArrayList<String> data = createList("src\\App\\archivos");
         boolean admin;
         boolean block;
-        double ubiLongitud;
-        double ubiLatitud;
+
         ArrayList<Ciudadano> ciudadanos = new ArrayList<>();
 
         for (String datum : data) {
-            String[] datasplt = datum.split("/", 7);
+            String[] datasplt = datum.split("/", 6);
                 admin = "true".equals(datasplt[3]);
                 block = "true".equals(datasplt[4]);
-                ubiLongitud = Double.parseDouble((datasplt[5]));
-                ubiLatitud = Double.parseDouble(datasplt[6]);
-                ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block, ubiLongitud, ubiLatitud));
+
+                ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block, datasplt[5]));
         }
         return ciudadanos;
     }
@@ -50,8 +48,8 @@ public class Anses extends LectorArchivos {
         String cel = a.cel;
         String admin;
         String block;
-        double ubiLongitud = a.ubiLongitud;
-        double ubiLatitud = a.ubiLatitud;
+        String zona=a.zona;
+
         if (a.admin){
             admin ="true";
         }else {
@@ -62,7 +60,7 @@ public class Anses extends LectorArchivos {
         }else {
             block = "false";
         }
-        String toAdd=name + "/" + cuil + "/" + cel + "/" + admin + "/" + block+"/"+ubiLongitud+"/"+ubiLatitud;
+        String toAdd=name + "/" + cuil + "/" + cel + "/" + admin + "/" + block+"/"+zona;
 
         añadir("src\\App\\archivos",toAdd);
 
@@ -73,18 +71,16 @@ public class Anses extends LectorArchivos {
         data = createList("src\\App\\dataSet");
         boolean admin;
         boolean block;
-        double ubiLongitud;
-        double ubiLatitud;
+
         ArrayList<Ciudadano>ciudadanos=new ArrayList<>();
 
         for (String datum : data) {
-            String[] datasplt = datum.split("/", 7);
+            String[] datasplt = datum.split("/", 6);
 
             admin = "true".equals(datasplt[3]);
             block = "true".equals(datasplt[4]);
-            ubiLongitud = Double.parseDouble(datasplt[5]);
-            ubiLatitud = Double.parseDouble(datasplt[6]);
-            ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block, ubiLongitud, ubiLatitud));
+
+            ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block, datasplt[5]));
         }
         return ciudadanos;
     }// Convierte el arreglo de String en ciudadanos(base anses)

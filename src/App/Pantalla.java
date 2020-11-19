@@ -158,6 +158,8 @@ public class Pantalla {
         System.out.println("***********************************");
         ImageMarkerApp map = new ImageMarkerApp();
         ImageMarkerApp.main(map.args);
+        Estadisticas estadisticas=new Estadisticas();
+        estadisticas.tablaEventos();
     }
 
     public  void clean(){
