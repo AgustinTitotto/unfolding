@@ -18,14 +18,9 @@ public class Brote {
         Checkbrote();
         if (brote.size()==0) {
             System.out.println("No se han detectado brotes");
-        }else{
-            System.out.println("Brote detectado. Estos son los CUILS de los involucrados");
-            System.out.println();
-            for (int i = 0; i < brote.size(); i++) {
-                System.out.println((i+1)+"_"+brote.get(i));
-            }
+        }else {
+            System.out.println("Brote detectado.La cantidad de involuicrados es de " + (brote.size() + 1));
         }
-
     }
 
     private void checkGrado2(){

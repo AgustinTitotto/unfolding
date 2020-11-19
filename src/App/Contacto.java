@@ -93,7 +93,7 @@ public class Contacto extends LectorArchivos {
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
-        String toAdd=covid+"/"+ LocalDate.now()+"/"+Ciudadano.getCiu(covid).zona+"\n";
+        String toAdd=covid+"/"+ LocalDate.now()+"/"+ Objects.requireNonNull(Ciudadano.getCiu(covid)).zona+"\n";
         añadir("src\\App\\PositiveCovid",toAdd);
     }
 

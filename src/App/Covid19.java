@@ -53,8 +53,8 @@ public class Covid19 extends LectorArchivos {
         ArrayList<String> afectados =createList("src\\App\\Afectados");
         int x = 0;
         for (int i = 0; i < afectados.size(); i++) {
-            String[] datasplt = afectados.get(i).split("/", 3);
-            if (datasplt[0].equals(this.cuil)){
+            String[] dataspltAfectados = afectados.get(i).split("/", 3);
+            if (dataspltAfectados[0].equals(this.cuil) && canIadd(cuil)){
                     x++;
                 }
 
@@ -67,6 +67,17 @@ public class Covid19 extends LectorArchivos {
                     "Encontraras mas informacion en el siguiente link:\n" +
                     "https://www.who.int/es/emergencies/diseases/novel-coronavirus-2019/advice-for-public/q-a-coronaviruses#:~:text=sintomas");
         }
+    }
+
+    private boolean canIadd(String cuil){
+        ArrayList<String>positivos=positivos();
+        for (int i = 0; i < positivos.size(); i++) {
+            String[] datasplt=positivos.get(i).split("/",3);
+            if (datasplt[0].equals(cuil)){
+                return false;
+            }
+        }
+        return true;
     }
 
 

@@ -1,12 +1,17 @@
 package App;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Estadisticas {
 
     ArrayList<String> pilar = new ArrayList<>();
     ArrayList<String> palermo = new ArrayList<>();
     ArrayList<String> avellaneda = new ArrayList<>();
+    ArrayList<String> sintomasActuales = Covid19.sintomas();
+
+    HashMap<String, Integer> rankingPilar = new HashMap<>();
+    HashMap<String, Integer> rankingAvellaneda = new HashMap<>();
+    HashMap<String, Integer> rankingPalermo = new HashMap<>();
 
     public Estadisticas() {
 
@@ -16,11 +21,11 @@ public class Estadisticas {
         distribuirZona();
         System.out.println("**********************************");
         System.out.println("_Eventos en Avellaneda:");
-        eventosComunes(avellaneda);
+        printRanking(rankingAvellaneda);
         System.out.println("\n_Eventos en Pilar:");
-        eventosComunes(pilar);
+        printRanking(rankingPilar);
         System.out.println("\n_Eventos en Palermo:");
-        eventosComunes(palermo);
+        printRanking(rankingPalermo);
     }
 
     private void distribuirZona() {
@@ -45,9 +50,6 @@ public class Estadisticas {
                 sintomasZona.add(datasplt[1]);
             }
         }
-        for (int i = 0; i < sintomasZona.size(); i++) {
-            System.out.println(sintomasZona.get(i));
-        }
     }
 
     private boolean canIAdd(String toAdd, ArrayList<String> sintomasZona) {
@@ -57,6 +59,53 @@ public class Estadisticas {
             }
         }
         return true;
+    }
+
+    // cuil/sintoma/zona
+
+
+    private void createRanking(){
+        this.rankingAvellaneda = sortByValue(getRankingPorZona(avellaneda, rankingAvellaneda));
+        this.rankingPilar = sortByValue(getRankingPorZona(pilar, rankingPilar));
+        this.rankingPalermo = sortByValue(getRankingPorZona(palermo, rankingPalermo));
+
+    }
+
+    private void printRanking(HashMap<String, Integer> zona){
+        createRanking();
+        int cantidad=0;
+        for (String key : zona.keySet()) {
+           if(cantidad<3){
+               System.out.println(key);
+               cantidad++;
+           }
+        }
+
+    }
+
+
+    private HashMap<String, Integer> getRankingPorZona(ArrayList<String> zona, HashMap<String, Integer> rankingPorZona){
+        eventosComunes(zona);
+        for (String sintoma: sintomasActuales) {
+            int veces = 0;
+            for (String datosCiudadano: zona) {
+                String[] datos = datosCiudadano.split("/");
+                if(sintoma.equals(datos[1])) veces++;
+            }
+            if(veces!=0) {
+                rankingPorZona.put(sintoma, veces);
+            }
+
+        }
+        return rankingPorZona;
+
+    }
+    private HashMap<String, Integer> sortByValue(HashMap<String, Integer> rankingPorZona) {
+        LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
+        rankingPorZona.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
+        return reverseSortedMap;
+
     }
 
 
