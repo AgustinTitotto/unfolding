@@ -93,9 +93,7 @@ public class Contacto extends LectorArchivos {
         }catch (IOException e){
             System.out.println(e.getMessage());
         }
-        double ubiLongitud = Objects.requireNonNull(Ciudadano.getCiu(covid)).ubiLongitud;
-        double ubiLatitud = Objects.requireNonNull(Ciudadano.getCiu(covid)).ubiLatitud;
-        String toAdd=covid+"/"+ LocalDate.now()+"/"+ubiLongitud+"/"+ubiLatitud+"\n";
+        String toAdd=covid+"/"+ LocalDate.now()+"/"+Ciudadano.getCiu(covid).zona+"\n";
         añadir("src\\App\\PositiveCovid",toAdd);
     }
 
