@@ -19,7 +19,7 @@ public class Brote {
         if (brote.size()==0) {
             System.out.println("No se han detectado brotes");
         }else {
-            System.out.println("Brote detectado.La cantidad de involuicrados es de " + (brote.size() + 1));
+            System.out.println("Brote detectado.La cantidad de involucrados es de " + (brote.size() + 1));
         }
     }
 
