@@ -15,7 +15,7 @@ public class Anses extends LectorArchivos {
         for (String datum : data) {
             String[] datasplt = datum.split("/", 6);
                 admin = "true".equals(datasplt[3]);
-                block = "true".equals(datasplt[4]);
+                block = "true".equals(datasplt[4]);//a
 
                 ciudadanos.add(new Ciudadano(datasplt[0], datasplt[1], datasplt[2], admin, block, datasplt[5]));
         }
